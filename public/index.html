@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="utf-8">
+        <title>Shopping Cart</title>
+        <link rel="stylesheet" href="cart.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+        
+    </head>
+    <body>
+        <!-- <form  action="/" method="post" id="cart"> -->
+        <div class="header">
+            <p class="logo">Shoppping cart</p>
+            <div class="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                <p id="count">0</p></div>
+        </div>
+        <div class="container">
+            <div id="root"></div>
+            <div class="sidebar">
+                <div class="head"><p>My Cart</p></div>
+                <div id="cartItem">Your cart is empty</div>
+                <div class="foot">
+                    <h3>Total</h3>
+                    <h2 id="total">$ 0.00</h2>
+                    <button id="saveToDatabase" onclick="saveToDatabase()">Save to Database</button>
+
+                    <!-- <button> add to database</button> -->
+                </div>
+            </div>
+        </div>
+    <!-- </form> -->
+    </body>
+    <script src="add.js"></script>
+</html>
