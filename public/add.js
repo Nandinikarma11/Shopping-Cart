@@ -83,7 +83,21 @@ function displaycart(){
 }
 
 function saveToDatabase() {
-    
+
+     fetch('/save-cart', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cart)
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }
 
 

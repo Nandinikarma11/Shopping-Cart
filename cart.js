@@ -3,10 +3,11 @@ const path = require ("path");
 const fs = require("fs");
 const app = express();
 const bodyParser = require('body-parser');
-const port = 500;
+const port = 5000;
 const mongoose = require('mongoose');
 
 app.use(bodyParser.json());
+app.use(express.urlencoded({extended: true}));
 
 
 app.use(express.static('public', {index: false}));
@@ -15,14 +16,25 @@ app.get('/',(req,res)=>{
 
 
 })
-app.use(express.urlencoded({extended: true}));
+
+app.post('/save-cart', (req, res) => {
+    const cartItems = req.body;
+    CartModel.insertMany(cartItems)
+        .then(() => {
+            res.status(200).send('Cart saved successfully!');
+        })
+        .catch((error) => {
+            res.status(500).send('Error saving cart to database:', error);
+        });
+});
+
 
 
 
 
 //Connect to mongodb
 mongoose.connect('mongodb://localhost:27017/Cart',{
-  
+    
 
 
 })
@@ -35,15 +47,13 @@ mongoose.connect('mongodb://localhost:27017/Cart',{
 
 const Schema = mongoose.Schema;
 const cartSchema = new Schema({
-    // id: Number,
-    // image: String,
+    
     title: String,
     price: Number
     
 });
 
 const CartModel = mongoose.model('DataList',cartSchema);
-
 
 
 
